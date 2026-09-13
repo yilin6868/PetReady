@@ -1,0 +1,14 @@
+{
+  "name": "pet-decision-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "养宠决策助手：移动端优先的养宠准备度与品种匹配工具",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
