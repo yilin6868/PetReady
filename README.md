@@ -7,7 +7,7 @@
 
 ## 功能演示
 
-https://github.com/user-attachments/assets/0d4b7d9e-2875-44bc-98d7-ffe6bc6e533c
+https://github.com/user-attachments/assets/43a811db-9e0b-45fc-9c4d-d04389192835
 
 > 1 分 05 秒 · 手机竖屏 H5 功能演示
 
