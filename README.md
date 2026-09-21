@@ -7,13 +7,9 @@
 
 ## 功能演示
 
-<p align="center">
-  <a href="./docs/PetReady-H5-demo.webm">
-    <img src="./docs/PetReady-demo-cover.png" width="360" alt="PetReady H5 功能演示：点击播放视频">
-  </a>
-</p>
+https://github.com/user-attachments/assets/0d4b7d9e-2875-44bc-98d7-ffe6bc6e533c
 
-<p align="center"><a href="./docs/PetReady-H5-demo.webm">▶ 点击播放 1 分 05 秒 H5 功能演示</a></p>
+> 1 分 05 秒 · 手机竖屏 H5 功能演示
 
 ## 启动
 
