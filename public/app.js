@@ -1,6 +1,6 @@
 const app=document.querySelector('#app');
-const storeKey='pet-decision-assistant.quiz.v1';
-const resultKey='pet-decision-assistant.result.v1';
+const storeKey='petready.quiz.v1';
+const resultKey='petready.result.v1';
 const legacyStoreKey='petfit.quiz.v1';
 const legacyResultKey='petfit.result.v1';
 let model={questions:[],chapters:[],breeds:[],answers:{},current:0,result:null,compare:[]};
@@ -9,7 +9,7 @@ const esc=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'
 const nav=(path)=>{ history.pushState({},'',path); render(); scrollTo({top:0,behavior:'auto'}); };
 const breedById=id=>model.breeds.find(b=>b.id===id);
 const icon=`<svg viewBox="0 0 64 56" aria-hidden="true"><path fill="#064022" d="M6 19C6 8 18 2 28 7c6 3 8 10 7 16-6-5-12-7-18-5-2 1-3 4-2 7-5 0-9-2-9-6Z"/><path fill="#95deb0" d="M58 19C58 8 46 2 36 7c-6 3-8 10-7 16 6-5 12-7 18-5 2 1 3 4 2 7 5 0 9-2 9-6ZM16 27c5 0 10 3 16 11 6-8 11-11 16-11 6 0 10 5 8 11-3 8-14 14-24 18C22 52 11 46 8 38c-2-6 2-11 8-11Z"/><path fill="#f56e2d" d="M32 51c-8-4-12-7-12-12 0-4 5-6 8-3l4 4 4-4c3-3 8-1 8 3 0 5-4 8-12 12Z"/></svg>`;
-const header=()=>`<header class="top"><button class="brand" data-nav="/" aria-label="返回养宠决策助手首页">${icon}<span>养宠决策助手</span></button><span class="local">本地计算 · 不收集身份信息</span></header>`;
+const header=()=>`<header class="top"><button class="brand" data-nav="/" aria-label="返回 PetReady 首页">${icon}<span>PetReady</span></button><span class="local">本地计算 · 不收集身份信息</span></header>`;
 const back=(fallback,label)=>`<button class="back" data-back="${fallback}">${label}</button>`;
 const save=()=>localStorage.setItem(storeKey,JSON.stringify({version:1,answers:model.answers,current:model.current,updatedAt:new Date().toISOString()}));
 const load=()=>{ try{ const raw=localStorage.getItem(storeKey)||localStorage.getItem(legacyStoreKey); const x=JSON.parse(raw||'null'); if(x?.version===1){model.answers=x.answers||{};model.current=Math.min(x.current||0,17);save();} }catch{} };
@@ -68,5 +68,5 @@ function bindCards(){app.querySelectorAll('[data-breed]').forEach(x=>x.onclick=(
 function bindGlobal(){app.querySelectorAll('[data-nav]').forEach(x=>x.onclick=()=>nav(x.dataset.nav));app.querySelectorAll('[data-back]').forEach(x=>x.onclick=()=>history.length>1?history.back():nav(x.dataset.back));}
 function render(){const p=location.pathname;if(p==='/quiz')quiz();else if(p==='/result')result();else if(p==='/compare')compare();else if(p.startsWith('/breeds/'))breedDetail(p.split('/').pop());else home();bindGlobal();}
 
-async function boot(){try{const [q,b]=await Promise.all([fetch('/api/questions').then(r=>r.json()),fetch('/api/breeds').then(r=>r.json())]);model.questions=q.questions;model.chapters=q.chapters;model.breeds=b.breeds;load();window.onpopstate=render;render();}catch{app.innerHTML='<main class="empty"><h1>养宠决策助手暂时无法启动</h1><p>请稍后刷新重试。</p></main>';}}
+async function boot(){try{const [q,b]=await Promise.all([fetch('/api/questions').then(r=>r.json()),fetch('/api/breeds').then(r=>r.json())]);model.questions=q.questions;model.chapters=q.chapters;model.breeds=b.breeds;load();window.onpopstate=render;render();}catch{app.innerHTML='<main class="empty"><h1>PetReady 暂时无法启动</h1><p>请稍后刷新重试。</p></main>';}}
 boot();

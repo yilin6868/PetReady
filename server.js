@@ -23,4 +23,4 @@ const server=http.createServer((req,res)=>{
   if(!file.startsWith(publicDir)) return send(res,403,'Forbidden','text/plain');
   fs.readFile(file,(err,data)=>{ if(err){ if(path.extname(file)) return send(res,404,'Not found','text/plain'); return fs.readFile(path.join(publicDir,'index.html'),(e,d)=>send(res,e?500:200,e?'Server error':d,'text/html; charset=utf-8')); } send(res,200,data,types[path.extname(file)]||'application/octet-stream'); });
 });
-server.listen(port,'0.0.0.0',()=>console.log(`养宠决策助手 running on port ${port}`));
+server.listen(port,'0.0.0.0',()=>console.log(`PetReady running on port ${port}`));
